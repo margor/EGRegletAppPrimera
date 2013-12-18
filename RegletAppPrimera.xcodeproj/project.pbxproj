@@ -22,6 +22,7 @@
 		D01E283B18606EBD009AB2FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D01E281A18606EBD009AB2FD /* UIKit.framework */; };
 		D01E284318606EBE009AB2FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D01E284118606EBE009AB2FD /* InfoPlist.strings */; };
 		D01E284518606EBE009AB2FD /* RegletAppPrimeraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D01E284418606EBE009AB2FD /* RegletAppPrimeraTests.m */; };
+		D07D687F1861B04200759B1D /* EGViewControlleriPad.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D687E1861B04200759B1D /* EGViewControlleriPad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		D01E284018606EBE009AB2FD /* RegletAppPrimeraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RegletAppPrimeraTests-Info.plist"; sourceTree = "<group>"; };
 		D01E284218606EBE009AB2FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D01E284418606EBE009AB2FD /* RegletAppPrimeraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegletAppPrimeraTests.m; sourceTree = "<group>"; };
+		D07D687D1861B04200759B1D /* EGViewControlleriPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGViewControlleriPad.h; path = RegletAppPrimera/EGViewControlleriPad.h; sourceTree = "<group>"; };
+		D07D687E1861B04200759B1D /* EGViewControlleriPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGViewControlleriPad.m; path = RegletAppPrimera/EGViewControlleriPad.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +121,8 @@
 				D01E282618606EBD009AB2FD /* EGAppDelegate.m */,
 				D01E282818606EBD009AB2FD /* Main_iPhone.storyboard */,
 				D01E282B18606EBD009AB2FD /* Main_iPad.storyboard */,
-				D01E282E18606EBD009AB2FD /* EGViewController.h */,
-				D01E282F18606EBD009AB2FD /* EGViewController.m */,
+				D07D68811861B04F00759B1D /* EGViewControlleriPad */,
+				D07D68801861B04700759B1D /* EGViewController */,
 				D01E283118606EBD009AB2FD /* Images.xcassets */,
 				D01E281D18606EBD009AB2FD /* Supporting Files */,
 			);
@@ -153,6 +156,25 @@
 				D01E284118606EBE009AB2FD /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D07D68801861B04700759B1D /* EGViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D01E282E18606EBD009AB2FD /* EGViewController.h */,
+				D01E282F18606EBD009AB2FD /* EGViewController.m */,
+			);
+			name = EGViewController;
+			sourceTree = "<group>";
+		};
+		D07D68811861B04F00759B1D /* EGViewControlleriPad */ = {
+			isa = PBXGroup;
+			children = (
+				D07D687D1861B04200759B1D /* EGViewControlleriPad.h */,
+				D07D687E1861B04200759B1D /* EGViewControlleriPad.m */,
+			);
+			name = EGViewControlleriPad;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +278,7 @@
 			files = (
 				D01E283018606EBD009AB2FD /* EGViewController.m in Sources */,
 				D01E282718606EBD009AB2FD /* EGAppDelegate.m in Sources */,
+				D07D687F1861B04200759B1D /* EGViewControlleriPad.m in Sources */,
 				D01E282318606EBD009AB2FD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,18 +1,18 @@
 //
-//  EGViewController.m
+//  EGViewControlleriPad.m
 //  RegletAppPrimera
 //
 //  Created by Esther Gordo Ramos on 17/12/13.
 //  Copyright (c) 2013 RegletApp. All rights reserved.
 //
 
-#import "EGViewController.h"
+#import "EGViewControlleriPad.h"
 
-@interface EGViewController ()
+@interface EGViewControlleriPad ()
 
 @end
 
-@implementation EGViewController{
+@implementation EGViewControlleriPad{
     CALayer *regleta;
     UIPanGestureRecognizer *panMoverRegleta;
     UITapGestureRecognizer *tapMoverRegleta;
@@ -56,10 +56,10 @@
     //-----dibujar rejilla -----
     int maxXPantallaInt = [NSNumber numberWithFloat:CGRectGetMaxX(self.view.bounds)].floatValue;
     int maxYPantallaInt = [NSNumber numberWithFloat:CGRectGetMaxY(self.view.bounds)].floatValue;
-    for (int i = 0; i<maxXPantallaInt; i=i+28) {
-        for (int j = 0; j<maxYPantallaInt; j=j+28){
+    for (int i = 0; i<maxXPantallaInt; i=i+40) {
+        for (int j = 0; j<maxYPantallaInt; j=j+40){
             CALayer *mark = [CALayer layer];
-            float diametro = 1.5;
+            float diametro = 3;
             float coordXAleatoriaFloat = i;
             float coordYAleatoriaFloat = j;
             
@@ -89,11 +89,9 @@
 {
     regleta.position = [recognizer locationInView:self.view];
     int recognizerX = [recognizer locationInView:self.view].x;
-    int posicionX = recognizerX - recognizerX%28;
+    int posicionX = recognizerX - recognizerX%40;
     int recognizerY = [recognizer locationInView:self.view].y;
-    int posicionY = recognizerY - recognizerY%28;
-    NSLog(@"recognizer x: %f recognizer Y: %f",[recognizer locationInView:self.view].x, [recognizer locationInView:self.view].y );
-    NSLog(@"posicion x: %i posicion Y: %i",posicionX,posicionY);
+    int posicionY = recognizerY - recognizerY%40;
     if (recognizer.state == UIGestureRecognizerStateEnded)
             {
                 regleta.position = CGPointMake(posicionX, posicionY);
@@ -106,9 +104,9 @@
 }
 
 
--(void)crearRegleta: (UIButton *)button
+-(void)crearRegleta: (UIButton *)button conAncho:(float)ancho conAlto:(float)alto
 {
-    regleta.bounds = CGRectMake(button.center.x,button.center.y, button.frame.size.width, button.frame.size.height);
+    regleta.bounds = CGRectMake(button.center.x,button.center.y, ancho, alto);
     regleta.position = CGPointMake(button.center.x,button.center.y);
     regleta.anchorPoint = CGPointMake(0,0);
     regleta.backgroundColor = button.backgroundColor.CGColor;
@@ -119,42 +117,42 @@
 
 - (IBAction)unoAction:(id)sender
 {
-    [self crearRegleta:sender];
+    [self crearRegleta:sender conAncho:40 conAlto:40];
     }
 - (IBAction)dosAction:(id)sender
 {
-    [self crearRegleta:sender];
+    [self crearRegleta:sender conAncho:80 conAlto:40];
 }
 - (IBAction)tresAction:(id)sender
 {
-    [self crearRegleta:sender];
+    [self crearRegleta:sender conAncho:120 conAlto:40];
 }
 - (IBAction)cuatroAction:(id)sender
 {
-    [self crearRegleta:sender];
+    [self crearRegleta:sender conAncho:160 conAlto:40];
 }
 - (IBAction)cincoAction:(id)sender
 {
-    [self crearRegleta:sender];
+    [self crearRegleta:sender conAncho:200 conAlto:40];
 }
 - (IBAction)seisAction:(id)sender
 {
-    [self crearRegleta:sender];
+    [self crearRegleta:sender conAncho:240 conAlto:40];
 }
 - (IBAction)sieteAction:(id)sender
 {
-    [self crearRegleta:sender];
+    [self crearRegleta:sender conAncho:280 conAlto:40];
 }
 - (IBAction)ochoAction:(id)sender
 {
-    [self crearRegleta:sender];
+    [self crearRegleta:sender conAncho:320 conAlto:40];
 }
 - (IBAction)nueveAction:(id)sender
 {
-    [self crearRegleta:sender];
+    [self crearRegleta:sender conAncho:360 conAlto:40];
 }
 - (IBAction)diezAction:(id)sender
 {
-    [self crearRegleta:sender];
+    [self crearRegleta:sender conAncho:400 conAlto:40];
 }
 @end
