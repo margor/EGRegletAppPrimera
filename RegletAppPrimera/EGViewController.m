@@ -16,6 +16,7 @@
     CALayer *regleta;
     UIPanGestureRecognizer *panMoverRegleta;
     UITapGestureRecognizer *tapMoverRegleta;
+    UIPinchGestureRecognizer *pinchGirarRegleta;
     NSArray *botonesArray;
 }
 
@@ -26,6 +27,8 @@
     for (UIButton *boton in botonesArray) {
         boton.tintColor = [UIColor whiteColor];
     }
+    _unoButtonOutlet.tintColor = [UIColor lightGrayColor];
+    _cincoButtonOutlet.tintColor = [UIColor lightGrayColor];
 
     
     self.view.backgroundColor = [UIColor colorWithRed:0.774 green:0.772 blue:0.730 alpha:1.000];
@@ -44,51 +47,33 @@
     regleta = [CALayer layer];
     panMoverRegleta = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moverRegleta:)];
     tapMoverRegleta = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(moverRegleta:)];
+    pinchGirarRegleta = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(girarRegleta:)];
     [self.view addGestureRecognizer:panMoverRegleta];
     [self.view addGestureRecognizer:tapMoverRegleta];
+    [self.view addGestureRecognizer:pinchGirarRegleta];
+
     
-//    panMoverRegleta = [[UIPanGestureRecognizer alloc] init];
-//    [self.view addGestureRecognizer:panMoverRegleta];
-//
-//    tapMoverRegleta = [[UITapGestureRecognizer alloc] init];
-//    [self.view addGestureRecognizer:tapMoverRegleta];
-    
-    
+    //-----dibujar rejilla -----
     int maxXPantallaInt = [NSNumber numberWithFloat:CGRectGetMaxX(self.view.bounds)].floatValue;
     int maxYPantallaInt = [NSNumber numberWithFloat:CGRectGetMaxY(self.view.bounds)].floatValue;
-    for (int i = 0; i<maxXPantallaInt; i=i+30) {
-        for (int j = 0; j<maxYPantallaInt; j=j+30){
+    for (int i = 10; i<maxXPantallaInt; i=i+28) {
+        for (int j = 10; j<maxYPantallaInt; j=j+28){
             CALayer *mark = [CALayer layer];
-            float radio = 4;
+            float diametro = 1;
             float coordXAleatoriaFloat = i;
             float coordYAleatoriaFloat = j;
             
-            mark.bounds = CGRectMake(0, 0, radio/2, radio/2);
+            mark.bounds = CGRectMake(0, 0, diametro, diametro);
             mark.position = CGPointMake(coordXAleatoriaFloat,coordYAleatoriaFloat);
             //mark.anchorPoint = CGPointMake(0.5,0.5);
             mark.backgroundColor = [UIColor whiteColor].CGColor;
-            mark.cornerRadius = radio;
+            mark.cornerRadius = diametro/2;
             [self.view.layer addSublayer:mark];
             
         }
     }
     
-//    for (int i = 1; i<150; i++) {
-//        CALayer *estrellasLayer = [CALayer layer];
-//        
-//        float coordXAleatoriaFloat = (arc4random()%(maxXPantallaInt));
-//        float coordYAleatoriaFloat = (arc4random()%(maxYPantallaInt));
-//        //variable = limite_inferior + rand() % (limite_superior +1 - limite_inferior) ;
-//        float maxDiamEstrellaFloat = (1+arc4random()%5);
-//        
-//        estrellasLayer.bounds = CGRectMake(0, 0, maxDiamEstrellaFloat, maxDiamEstrellaFloat);
-//        estrellasLayer.position = CGPointMake(coordXAleatoriaFloat, coordYAleatoriaFloat);
-//        
-//        estrellasLayer.cornerRadius = maxDiamEstrellaFloat/2;
-//        estrellasLayer.backgroundColor = [UIColor whiteColor].CGColor;
-//        [self.view.layer addSublayer:estrellasLayer];
-//        
-//    }
+
 
     
     
@@ -104,9 +89,9 @@
 {
     regleta.position = [recognizer locationInView:self.view];
     int recognizerX = [recognizer locationInView:self.view].x;
-    int posicionX = recognizerX - recognizerX%28;
+    int posicionX = recognizerX - recognizerX%28+10;
     int recognizerY = [recognizer locationInView:self.view].y;
-    int posicionY = recognizerY - recognizerY%28;
+    int posicionY = recognizerY - recognizerY%28-4;
     NSLog(@"recognizer x: %f recognizer Y: %f",[recognizer locationInView:self.view].x, [recognizer locationInView:self.view].y );
     NSLog(@"posicion x: %i posicion Y: %i",posicionX,posicionY);
     if (recognizer.state == UIGestureRecognizerStateEnded)
@@ -115,21 +100,18 @@
             }
 }
 
+-(void)girarRegleta: (UIPinchGestureRecognizer *)recognizer
+{
+    
+}
+
 
 -(void)crearRegleta: (UIButton *)button
 {
-    //CALayer *regleta = [CALayer layer];
     regleta.bounds = CGRectMake(button.center.x,button.center.y, button.frame.size.width, button.frame.size.height);
     regleta.position = CGPointMake(button.center.x,button.center.y);
     regleta.anchorPoint = CGPointMake(0.5,0.5);
     regleta.backgroundColor = button.backgroundColor.CGColor;
-    
-    //tapMoverRegleta = [[UITapGestureRecognizer alloc] init];
-    //[self moverRegleta:tapMoverRegleta withRegleta:regleta];
-    //[self.view addGestureRecognizer:tapMoverRegleta];
-    
-    //[self moverRegleta:panMoverRegleta withRegleta:regleta];
-    
 
     [self.view.layer addSublayer:regleta];
     
