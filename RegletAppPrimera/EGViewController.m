@@ -34,7 +34,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:0.774 green:0.772 blue:0.730 alpha:1.000];
 	// Do any additional setup after loading the view, typically from a nib.
     _unoButtonOutlet.backgroundColor = [UIColor whiteColor];
-    _dosButtonOutlet.backgroundColor = [UIColor colorWithRed:1 green:0.2 blue:0.3 alpha:1];
+    _dosButtonOutlet.backgroundColor = [UIColor colorWithRed:1.000 green:0.103 blue:0.146 alpha:1.000];
     _tresButtonOutlet.backgroundColor = [UIColor colorWithRed:0.287 green:0.661 blue:0.136 alpha:1.000];
     _cuatroButtonOutlet.backgroundColor = [UIColor colorWithRed:0.4 green:0.2 blue:0.3 alpha:1];
     _cincoButtonOutlet.backgroundColor = [UIColor yellowColor];

@@ -23,6 +23,12 @@
 		D01E284318606EBE009AB2FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D01E284118606EBE009AB2FD /* InfoPlist.strings */; };
 		D01E284518606EBE009AB2FD /* RegletAppPrimeraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D01E284418606EBE009AB2FD /* RegletAppPrimeraTests.m */; };
 		D07D687F1861B04200759B1D /* EGViewControlleriPad.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D687E1861B04200759B1D /* EGViewControlleriPad.m */; };
+		D07D6896186C351D00759B1D /* icon_botonMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = D07D6891186C351D00759B1D /* icon_botonMenu.png */; };
+		D07D6897186C351D00759B1D /* icon_botonNuevahoja.png in Resources */ = {isa = PBXBuildFile; fileRef = D07D6892186C351D00759B1D /* icon_botonNuevahoja.png */; };
+		D07D6898186C351D00759B1D /* icon_botonSalir.png in Resources */ = {isa = PBXBuildFile; fileRef = D07D6893186C351D00759B1D /* icon_botonSalir.png */; };
+		D07D6899186C351D00759B1D /* icon_botonVisualizacion.png in Resources */ = {isa = PBXBuildFile; fileRef = D07D6894186C351D00759B1D /* icon_botonVisualizacion.png */; };
+		D07D689A186C351D00759B1D /* icon_viewArcoMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = D07D6895186C351D00759B1D /* icon_viewArcoMenu.png */; };
+		D07D689E1875CB7F00759B1D /* icon_botonCompartir.png in Resources */ = {isa = PBXBuildFile; fileRef = D07D689D1875CB7F00759B1D /* icon_botonCompartir.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +64,12 @@
 		D01E284418606EBE009AB2FD /* RegletAppPrimeraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegletAppPrimeraTests.m; sourceTree = "<group>"; };
 		D07D687D1861B04200759B1D /* EGViewControlleriPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGViewControlleriPad.h; path = RegletAppPrimera/EGViewControlleriPad.h; sourceTree = "<group>"; };
 		D07D687E1861B04200759B1D /* EGViewControlleriPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EGViewControlleriPad.m; path = RegletAppPrimera/EGViewControlleriPad.m; sourceTree = "<group>"; };
+		D07D6891186C351D00759B1D /* icon_botonMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_botonMenu.png; path = Resources/icon_botonMenu.png; sourceTree = "<group>"; };
+		D07D6892186C351D00759B1D /* icon_botonNuevahoja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_botonNuevahoja.png; path = Resources/icon_botonNuevahoja.png; sourceTree = "<group>"; };
+		D07D6893186C351D00759B1D /* icon_botonSalir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_botonSalir.png; path = Resources/icon_botonSalir.png; sourceTree = "<group>"; };
+		D07D6894186C351D00759B1D /* icon_botonVisualizacion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_botonVisualizacion.png; path = Resources/icon_botonVisualizacion.png; sourceTree = "<group>"; };
+		D07D6895186C351D00759B1D /* icon_viewArcoMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_viewArcoMenu.png; path = Resources/icon_viewArcoMenu.png; sourceTree = "<group>"; };
+		D07D689D1875CB7F00759B1D /* icon_botonCompartir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_botonCompartir.png; path = Resources/icon_botonCompartir.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				D01E281C18606EBD009AB2FD /* RegletAppPrimera */,
+				D07D6890186C325100759B1D /* Resources */,
 				D01E283E18606EBD009AB2FD /* RegletAppPrimeraTests */,
 				D01E281518606EBD009AB2FD /* Frameworks */,
 				D01E281418606EBD009AB2FD /* Products */,
@@ -177,6 +190,19 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		D07D6890186C325100759B1D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D07D689D1875CB7F00759B1D /* icon_botonCompartir.png */,
+				D07D6891186C351D00759B1D /* icon_botonMenu.png */,
+				D07D6892186C351D00759B1D /* icon_botonNuevahoja.png */,
+				D07D6893186C351D00759B1D /* icon_botonSalir.png */,
+				D07D6894186C351D00759B1D /* icon_botonVisualizacion.png */,
+				D07D6895186C351D00759B1D /* icon_viewArcoMenu.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,10 +280,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07D6898186C351D00759B1D /* icon_botonSalir.png in Resources */,
+				D07D689E1875CB7F00759B1D /* icon_botonCompartir.png in Resources */,
+				D07D689A186C351D00759B1D /* icon_viewArcoMenu.png in Resources */,
+				D07D6899186C351D00759B1D /* icon_botonVisualizacion.png in Resources */,
 				D01E282D18606EBD009AB2FD /* Main_iPad.storyboard in Resources */,
 				D01E283218606EBD009AB2FD /* Images.xcassets in Resources */,
+				D07D6896186C351D00759B1D /* icon_botonMenu.png in Resources */,
 				D01E282A18606EBD009AB2FD /* Main_iPhone.storyboard in Resources */,
 				D01E282118606EBD009AB2FD /* InfoPlist.strings in Resources */,
+				D07D6897186C351D00759B1D /* icon_botonNuevahoja.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

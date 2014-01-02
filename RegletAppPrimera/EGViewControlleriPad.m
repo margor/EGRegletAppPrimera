@@ -18,6 +18,7 @@
     UITapGestureRecognizer *tapMoverRegleta;
     UIPinchGestureRecognizer *pinchGirarRegleta;
     NSArray *botonesArray;
+    BOOL semaforoMenuButton;
 }
 
 - (void)viewDidLoad
@@ -54,8 +55,8 @@
 
     
     //-----dibujar rejilla -----
-    int maxXPantallaInt = [NSNumber numberWithFloat:CGRectGetMaxX(self.view.bounds)].floatValue;
-    int maxYPantallaInt = [NSNumber numberWithFloat:CGRectGetMaxY(self.view.bounds)].floatValue;
+    int maxXPantallaInt = [NSNumber numberWithFloat:CGRectGetMaxY(self.view.bounds)].floatValue;
+    int maxYPantallaInt = [NSNumber numberWithFloat:CGRectGetMaxX(self.view.bounds)].floatValue;
     for (int i = 0; i<maxXPantallaInt; i=i+40) {
         for (int j = 0; j<maxYPantallaInt; j=j+40){
             CALayer *mark = [CALayer layer];
@@ -73,6 +74,15 @@
         }
     }
     
+    semaforoMenuButton = 1;
+    
+    
+    [self latir:_menuButtonOutlet.layer];
+    _compartirButtonOutlet.alpha = 0;
+    _salirButtonOutlet.alpha = 0;
+    _nuevaHojaButtonOutlet.alpha = 0;
+    _visualizacionButtonOutlet.alpha = 0;
+    _arcoMenuView.alpha = 0;
 
 
     
@@ -155,4 +165,139 @@
 {
     [self crearRegleta:sender conAncho:400 conAlto:40];
 }
+
+
+- (IBAction)menuButtonAction:(id)sender
+{
+    if (semaforoMenuButton == 1) {
+        [self apareceMenu];
+    }
+    else [self desapareceMenu];
+    
+    
+
+}
+#pragma mark - Animations
+
+-(void)apareceMenu
+{
+    CABasicAnimation *aparecer = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    CABasicAnimation *escalar = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    CABasicAnimation *desaparecer = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    desaparecer.duration = 1;
+    aparecer.duration = 0.5;
+    escalar.duration = 0.2;
+    semaforoMenuButton = 0;
+    
+    aparecer.fromValue = 0;
+    aparecer.toValue = [NSNumber numberWithFloat:1];
+    escalar.fromValue = [NSNumber numberWithFloat:0.5];
+    escalar.toValue =[NSNumber numberWithFloat:1];
+    _arcoMenuView.layer.anchorPoint = CGPointMake(0, 0);
+    _arcoMenuView.layer.position = CGPointMake(0, 0);
+    _arcoMenuView.layer.opacity = 1;
+    
+    [_arcoMenuView.layer addAnimation:escalar forKey:@"scale2"];
+    [_arcoMenuView.layer addAnimation:aparecer forKey:@"opacity2"];
+    [_arcoMenuView.layer addAnimation:desaparecer forKey:@"opacity2"];
+    
+    [self aparecerBotonMenu:_nuevaHojaButtonOutlet withDuration:0.1];
+    [self aparecerBotonMenu:_visualizacionButtonOutlet withDuration:0.2];
+    [self aparecerBotonMenu:_salirButtonOutlet withDuration:0.3];
+    [self aparecerBotonMenu:_compartirButtonOutlet withDuration:0.4];
+    
+    
+}
+
+-(void)desapareceMenu
+{
+    CABasicAnimation *escalar = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    CABasicAnimation *desaparecer = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    desaparecer.duration = 0.2;
+    escalar.duration = 0.2;
+    semaforoMenuButton = 1;
+    
+    desaparecer.fromValue = [NSNumber numberWithFloat:1];
+    desaparecer.toValue = 0;
+    escalar.fromValue = [NSNumber numberWithFloat:1];
+    escalar.toValue = [NSNumber numberWithFloat:0.5];
+    _arcoMenuView.layer.opacity = 0;
+
+    [_arcoMenuView.layer addAnimation:desaparecer forKey:@"opacity2"];
+    [_arcoMenuView.layer addAnimation:escalar forKey:@"scale"];
+    
+    [self desaparecerBotonMenu:_visualizacionButtonOutlet];
+    [self desaparecerBotonMenu:_nuevaHojaButtonOutlet];
+    [self desaparecerBotonMenu:_salirButtonOutlet];
+    [self desaparecerBotonMenu:_compartirButtonOutlet];
+    
+    
+
+}
+
+-(void)aparecerBotonMenu:(UIButton *)boton withDuration:(CFTimeInterval)duracion
+{
+    [boton.layer removeAllAnimations];
+    CABasicAnimation *escalarButton = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+
+    escalarButton.toValue = @1.7;
+    escalarButton.duration = duracion;
+    escalarButton.autoreverses = YES;
+    boton.layer.opacity = 1;
+    [boton.layer addAnimation:escalarButton forKey:@"transformAnimation"];
+    
+    [self temblar:boton.layer];
+}
+
+-(void)desaparecerBotonMenu:(UIButton *)boton
+{
+    [boton.layer removeAllAnimations];
+    CABasicAnimation *escalarButton2 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    CABasicAnimation *desaparecer = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    desaparecer.fromValue = [NSNumber numberWithFloat:1];
+    desaparecer.toValue = 0;
+    desaparecer.duration = 0.2;
+
+    escalarButton2.toValue = @0.2;
+    escalarButton2.duration = 0.2;
+    boton.layer.opacity = 0;
+    [boton.layer addAnimation:escalarButton2 forKey:@"transformAnimation2"];
+    [boton.layer addAnimation:desaparecer forKey:@"opacity2"];
+
+
+}
+-(void)latir:(CALayer *)sender
+{
+    CABasicAnimation *latir = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    latir.fromValue = @1;
+    latir.toValue = @1.08;
+    latir.duration = 1;
+    latir.repeatCount = 2000;
+    latir.autoreverses = YES;
+    [sender addAnimation:latir forKey:@"latir"];
+}
+-(void)temblar:(CALayer *)sender
+{
+    CABasicAnimation *temblarX = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
+    temblarX.fromValue = @1;
+    temblarX.toValue = @1.1;
+    temblarX.duration = 1;
+    temblarX.repeatCount = 2000;
+    temblarX.autoreverses = YES;
+    [sender addAnimation:temblarX forKey:@"temblarX"];
+    CABasicAnimation *temblarY = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
+    temblarY.fromValue = @1;
+    temblarY.toValue = @1.1;
+    temblarY.duration = 1;
+    temblarY.beginTime = 1;
+    temblarY.repeatCount = 2000;
+    temblarY.autoreverses = YES;
+    [sender addAnimation:temblarX forKey:@"temblarY"];
+    
+    CAAnimationGroup *agrupacionAnimaciones = [CAAnimationGroup animation];
+    agrupacionAnimaciones.animations = [NSArray arrayWithObjects:temblarX,temblarY, nil];
+    agrupacionAnimaciones.duration = 4.0;
+    [sender addAnimation:agrupacionAnimaciones forKey:@"temblar"];
+}
+
 @end

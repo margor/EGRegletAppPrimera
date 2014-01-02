@@ -32,4 +32,11 @@
 - (IBAction)nueveAction:(id)sender;
 - (IBAction)diezAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIImageView *arcoMenuView;
+- (IBAction)menuButtonAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *nuevaHojaButtonOutlet;
+@property (weak, nonatomic) IBOutlet UIButton *visualizacionButtonOutlet;
+@property (weak, nonatomic) IBOutlet UIButton *salirButtonOutlet;
+@property (weak, nonatomic) IBOutlet UIButton *menuButtonOutlet;
+@property (weak, nonatomic) IBOutlet UIButton *compartirButtonOutlet;
 @end
